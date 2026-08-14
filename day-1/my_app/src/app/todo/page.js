@@ -1,28 +1,22 @@
-"use client"
+export default async function Todo() {
+    const response= await fetch("https://dummyjson.com/todos")
+    const data= await response.json()
+    // console.log(data);
 
-import { useEffect, useState } from "react";
 
-export default function todos() {
-  useEffect(() => {
-    fetchTodo();
-  }, []);
-  const [data, setDatat] = useState(null);
-  async function fetchTodo() {
-    const response = await fetch("https://dummyjson.com/todos");
-    const data = await response.json();
-    console.log(data);
-    setDatat(data.todos)
-  }
-
-  if(data==null){
-    return <div>
-        loading...
-    </div>
-  }
   return (
     <div>
       <h1>todo page</h1>
-      {data.map((todoObj)=>{
+       <div style={{
+        "display":"flex",
+        "justifyContent":"space-between"
+       }}>
+        <h3>UserID </h3>
+       <h3 style={{
+        "marginRight":"720px"
+       }}> Todos</h3>
+       </div>
+      {data.todos.map((todoObj)=>{
         return <TodoComponent key={todoObj.id}  prop={todoObj} />
       })}
     </div>
@@ -39,9 +33,11 @@ function TodoComponent({prop}){
         justifyContent:"space-between",
         flexWrap: "wrap",
       }}>
-         <div>{userId}</div> 
+      <div> {userId}
+        </div> 
       {/* <div>{id}</div> */}
-      <div>{todo}</div>
+      <div> {todo}</div>
       <div>{completed}</div>
+      
     </div>
 }
