@@ -1,5 +1,3 @@
-
-
 import { UserModel } from "@/lib/mongodb"
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt"
