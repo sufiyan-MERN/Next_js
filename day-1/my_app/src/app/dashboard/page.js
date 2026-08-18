@@ -6,13 +6,16 @@ export default async function Dashboard(){
     return <div>
         <h1>DASHBOARD</h1>
         <h1>current users of your application: </h1>
-        <UserComponenet value={details}/>
+        {/* <UserComponenet value={details}/> */}
+        {data.data.map((user)=>{
+          return  <UserComponenet details={user} />
+        })}
     </div>
 }
 
 function UserComponenet({details}){
     return <div>
-        <h1>{details.username}</h1>
-        <h1> {details.email} </h1>
+        <h3> username-{details.username }  ||  email- {details.email}</h3   >
+        
     </div>
 }
