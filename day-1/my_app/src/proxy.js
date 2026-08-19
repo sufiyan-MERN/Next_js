@@ -1,7 +1,7 @@
 import { jwtVerify } from "jose";
 import { NextResponse } from "next/server";
 
-export async function Proxy(request) {
+export async function proxy(request) {
   const token = await request.cookies.get("token")?.value;
   if (!token) {
     return NextResponse.rewrite(
@@ -21,5 +21,5 @@ export async function Proxy(request) {
 }
 
 export const config = {
-  matcher: [],
+  matcher: ["/api/v1/users"],
 };
