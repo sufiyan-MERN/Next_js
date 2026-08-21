@@ -37,6 +37,8 @@ export async function POST(request) {
     }
 
     const token= await jwt.sign(payload,process.env.JWT_SECRET)
+
+    
     const response= NextResponse.json({
         msg:"signin successfully",
         success:true
